@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Btn } from ".";
+import { Btn, Dropdown } from ".";
 import logo from "@/assets/images/logo.jpg";
 import { useRouter } from "next/router";
 
@@ -16,7 +16,9 @@ const Navbar = () => {
         <h2 className="text-2xl font-bold ml-2">Elite Ensemble</h2>
       </div>
       <div className="flex flex-row items-center">
-        <div>dropdown</div>
+        <div>
+          <Dropdown />
+        </div>
         <Btn variant="primary" size="md" label="PC Builder" />
       </div>
     </nav>
