@@ -15,10 +15,15 @@ const Navbar = () => {
         <Image src={logo} alt="logo" width={36} height={36} />
         <h2 className="text-2xl font-bold ml-2">Elite Ensemble</h2>
       </div>
-      <div className="flex flex-row items-center">
-        <div>
-          <Dropdown />
-        </div>
+      <div className="flex flex-row items-center gap-4">
+        <Dropdown />
+        <button
+          onClick={() => router.push("/signin")}
+          className="bg-gray-900 hover:bg-gray-800 px-3 py-2 rounded-md font-semibold"
+        >
+          Sign In
+        </button>
+
         <Btn variant="primary" size="md" label="PC Builder" />
       </div>
     </nav>

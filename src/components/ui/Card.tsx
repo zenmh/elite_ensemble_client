@@ -35,7 +35,7 @@ const Card: FC<CardProps> = ({
           alt={product_name}
           width={320}
           height={300}
-          className="rounded-t-md w-full h-auto transition-transform transform scale-100 group-hover:scale-105 duration-300"
+          className="w-full h-auto transition-transform transform scale-100 group-hover:scale-105 duration-300 rounded-t-md group-hover:rounded-t-md"
         />
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black bg-opacity-60 text-white text-xl font-semibold transition-opacity duration-300 cursor-pointer">
           Add To Cart
@@ -45,7 +45,7 @@ const Card: FC<CardProps> = ({
         <h3 className="text-2xl font-semibold text-gray-300 text-ellipsis">
           {product_name}
         </h3>
-        <div className="flex flex-row justify-between items-center mr-4 my-2">
+        <div className="flex flex-row justify-between items-center mr-2 my-2">
           <p className="border-2 border-slate-300 hover:border-slate-400 px-3 rounded-full w-fit text-xs text-gray-300 hover:text-gray-400 font-semibold">
             {category}
           </p>

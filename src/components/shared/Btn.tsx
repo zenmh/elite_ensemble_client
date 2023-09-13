@@ -7,6 +7,7 @@ interface BtnProps {
   onClick?: () => void;
   disabled?: boolean;
   loading?: boolean;
+  type?: "submit" | "reset" | "button" | undefined;
 }
 
 const Btn: FC<BtnProps> = ({
@@ -16,11 +17,13 @@ const Btn: FC<BtnProps> = ({
   onClick,
   disabled,
   loading,
+  type,
 }) => {
   return (
     <button
       onClick={onClick}
       disabled={disabled}
+      type={type}
       className={`
       group overflow-hidden bg-gradient-to-br  text-white font-semibold py-2 px-4 rounded-full shadow-md hover:shadow-lg transform transition-transform focus:outline-none disabled:bg-gray-600
       ${size === "xs" && "scale-50"}
