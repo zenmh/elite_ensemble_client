@@ -4,6 +4,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { AiFillEye, AiFillEyeInvisible, AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
 
 interface FormInputs {
   email: string;
@@ -87,10 +88,16 @@ const SignIn = () => {
         </p>
         <hr className="h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
         <div className="flex flex-row my-5 gap-4">
-          <IconBtn onClick={() => {}} label="Google">
+          <IconBtn
+            onClick={() => signIn("google", { callbackUrl: "/" })}
+            label="Google"
+          >
             <FcGoogle />
           </IconBtn>
-          <IconBtn onClick={() => {}} label="GitHub">
+          <IconBtn
+            onClick={() => signIn("github", { callbackUrl: "/" })}
+            label="GitHub"
+          >
             <AiFillGithub />
           </IconBtn>
         </div>

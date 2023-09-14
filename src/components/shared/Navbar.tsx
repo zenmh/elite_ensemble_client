@@ -2,9 +2,13 @@ import Image from "next/image";
 import { Btn, Dropdown } from ".";
 import logo from "@/assets/images/logo.jpg";
 import { useRouter } from "next/router";
+import { signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
   const router = useRouter();
+  const { data: session } = useSession();
+
+  console.log(session?.user?.email);
 
   return (
     <nav className="flex flex-row items-center justify-between py-1 px-2">
@@ -17,12 +21,24 @@ const Navbar = () => {
       </div>
       <div className="flex flex-row items-center gap-4">
         <Dropdown />
-        <button
-          onClick={() => router.push("/signin")}
-          className="bg-gray-900 hover:bg-gray-800 px-3 py-2 rounded-md font-semibold"
-        >
-          Sign In
-        </button>
+        {session?.user?.email ? (
+          <button
+            onClick={() => {
+              signOut();
+              router.push("/");
+            }}
+            className="bg-gray-900 hover:bg-gray-800 px-3 py-2 rounded-md font-semibold"
+          >
+            Sign Out
+          </button>
+        ) : (
+          <button
+            onClick={() => router.push("/signin")}
+            className="bg-gray-900 hover:bg-gray-800 px-3 py-2 rounded-md font-semibold"
+          >
+            Sign In
+          </button>
+        )}
 
         <Btn variant="primary" size="md" label="PC Builder" />
       </div>
