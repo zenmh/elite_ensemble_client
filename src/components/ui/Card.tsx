@@ -2,21 +2,23 @@ import Image from "next/image";
 import { FC } from "react";
 import { Btn } from "../shared";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { useRouter } from "next/router";
 
 interface CardProps {
   image: string;
   product_name: string;
   category:
-    | "CPU / Processor"
-    | "Motherboard"
-    | "RAM"
-    | "Power Supply Unit"
-    | "Storage Device"
-    | "Monitor"
-    | "Others";
+    | "cpu_or_processor"
+    | "motherboard"
+    | "ram"
+    | "power_supply_unit"
+    | "storage_device"
+    | "monitor"
+    | "others";
   price: number;
   status: "In Stock" | "Out Of Stock";
-  rating: number;
+  rating: number[];
+  id: string;
 }
 
 const Card: FC<CardProps> = ({
@@ -26,7 +28,10 @@ const Card: FC<CardProps> = ({
   price,
   status,
   rating,
+  id,
 }) => {
+  const { push } = useRouter();
+
   return (
     <div className="flex flex-col w-[320px] rounded-md bg-gray-900 hover:shadow-2xl">
       <div className="relative group overflow-hidden">
@@ -41,27 +46,33 @@ const Card: FC<CardProps> = ({
           Add To Cart
         </div>
       </div>
+
       <div className="m-2">
-        <h3 className="text-2xl font-semibold text-gray-300 text-ellipsis">
+        <h3 className="text-2xl font-semibold text-gray-300 truncate text-ellipsis">
           {product_name}
         </h3>
         <div className="flex flex-row justify-between items-center mr-2 my-2">
           <p className="border-2 border-slate-300 hover:border-slate-400 px-3 rounded-full w-fit text-xs text-gray-300 hover:text-gray-400 font-semibold">
-            {category}
+            {category === "cpu_or_processor"
+              ? "CPU / Processor"
+              : category
+                  .split("_")
+                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join(" ")}
           </p>
           <div className="flex flex-row items-center justify-center gap-1">
             <span className="font-semibold text-gray-400">
-              {rating.toFixed(1)}
+              {(rating.reduce((a, c) => a + c, 0) / rating.length).toFixed(1)}
             </span>
             <AiFillStar className="text-xl text-yellow-500" />
           </div>
         </div>
         <p className="flex flex-row items-center gap-5">
           <span className="text-gray-400">
-            <del>Tk. {price + 200}</del>
+            <del>Tk. {price + 200}/-</del>
           </span>
           <span className="text-xl font-semibold text-gray-200">
-            <ins>Tk. {price}</ins>
+            <ins>Tk. {price}/-</ins>
           </span>
         </p>
         <div className="flex flex-row justify-start items-center gap-3 text-2xl text-amber-400 my-3">
@@ -75,7 +86,12 @@ const Card: FC<CardProps> = ({
           <h4 className="border-2 border-slate-300 hover:border-slate-400 px-2 rounded-full text-gray-300 hover:text-gray-400 font-semibold">
             {status}
           </h4>
-          <Btn label="View Details" size="md" variant="secondary" />
+          <Btn
+            onClick={() => push(`/products/product/${id}`)}
+            label="View Details"
+            size="md"
+            variant="secondary"
+          />
         </div>
       </div>
     </div>

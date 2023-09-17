@@ -5,15 +5,13 @@ import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
-  const router = useRouter();
+  const { push } = useRouter();
   const { data: session } = useSession();
 
-  console.log(session?.user?.email);
-
   return (
-    <nav className="flex flex-row items-center justify-between py-1 px-2">
+    <nav className="flex flex-row items-center justify-between py-1 px-2 mt-1">
       <div
-        onClick={() => router.push("/")}
+        onClick={() => push("/")}
         className="border-2 border-red-50 flex flex-row items-center pr-2 cursor-pointer"
       >
         <Image src={logo} alt="logo" width={36} height={36} />
@@ -25,7 +23,7 @@ const Navbar = () => {
           <button
             onClick={() => {
               signOut();
-              router.push("/");
+              push("/");
             }}
             className="bg-gray-900 hover:bg-gray-800 px-3 py-2 rounded-md font-semibold"
           >
@@ -33,7 +31,7 @@ const Navbar = () => {
           </button>
         ) : (
           <button
-            onClick={() => router.push("/signin")}
+            onClick={() => push("/signin")}
             className="bg-gray-900 hover:bg-gray-800 px-3 py-2 rounded-md font-semibold"
           >
             Sign In

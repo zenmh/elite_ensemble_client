@@ -34,7 +34,7 @@ const SignIn = () => {
     <section className="flex flex-row justify-center items-center min-h-screen">
       <div className="border-2 border-neutral-700 p-2 rounded-lg mt-2">
         <h2 className="text-2xl font-bold text-neutral-300 mb-4 text-start">
-          Sign In To Build Elite
+          Sign In To Build Elite Class
         </h2>
         <form
           onSubmit={handleSubmit(onSubmit)}

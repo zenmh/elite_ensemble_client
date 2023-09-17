@@ -1,8 +1,15 @@
 import { Btn } from "@/components/shared";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const NotFound = () => {
+  const { push } = useRouter();
+
+  setTimeout(() => {
+    push("/");
+  }, 3000);
+
   return (
     <div className="h-screen w-screen bg-gray-950 flex items-center">
       <div className="container flex flex-col md:flex-row items-center justify-between px-5 text-gray-700">

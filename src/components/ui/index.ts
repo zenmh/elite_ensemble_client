@@ -1,3 +1,5 @@
 import Card from "./Card";
+import Products from "./Products";
+import ProductDetails from "./ProductDetails";
 
-export { Card };
+export { Card, Products, ProductDetails };

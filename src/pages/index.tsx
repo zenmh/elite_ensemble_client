@@ -1,20 +1,13 @@
 import { ReactNode } from "react";
 import RootLayout from "@/components/layouts/RootLayout";
-import { Card } from "@/components/ui";
-import image from "@/assets/images/logo.jpg";
+import type { IProduct } from "@/interfaces/product";
+import { Products } from "@/components/ui";
+import { GetStaticProps } from "next";
 
-const Home = () => {
+const Home = ({ products }: { products: IProduct[] }) => {
   return (
-    <div className="flex flex-col ml-12">
-      <h2>Hello World !</h2>
-      <Card
-        category="Power Supply Unit"
-        image={image}
-        price={4000}
-        product_name="Trident Z Royals"
-        rating={4}
-        status="In Stock"
-      />
+    <div>
+      <Products products={products} />
     </div>
   );
 };
@@ -22,3 +15,15 @@ const Home = () => {
 export default Home;
 
 Home.getLayout = (page: ReactNode) => <RootLayout>{page}</RootLayout>;
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  console.log(params);
+  const res = await fetch(`${process.env.SERVER_URI}/products`);
+  const data = await res.json();
+
+  return {
+    props: {
+      products: data.data,
+    },
+  };
+};
