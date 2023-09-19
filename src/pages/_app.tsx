@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import "react-toastify/dist/ReactToastify.css";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import type { AppProps } from "next/app";
 import { SessionProvider } from "next-auth/react";
 import { ToastContainer } from "react-toastify";

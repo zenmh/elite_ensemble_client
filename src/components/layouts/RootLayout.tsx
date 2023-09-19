@@ -5,7 +5,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <div className="max-w-[1464px] mx-auto">
       <Navbar />
-      {children}
+      <div className="px-2">{children}</div>
       <Footer />
     </div>
   );

@@ -86,7 +86,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
         <div className="flex felx-row items-center justify-around mt-3">
           <Btn
             onClick={onClick}
-            label="Add To Cart"
+            label="Add To Builder"
             size="md"
             variant="primary"
           />

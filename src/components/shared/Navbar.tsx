@@ -3,6 +3,7 @@ import { Btn, Dropdown } from ".";
 import logo from "@/assets/images/logo.jpg";
 import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { push } = useRouter();
@@ -38,7 +39,12 @@ const Navbar = () => {
           </button>
         )}
 
-        <Btn variant="primary" size="md" label="PC Builder" />
+        <Btn
+          variant="primary"
+          size="md"
+          label="PC Builder"
+          onClick={() => toast.info("Will Implement Later ^_^")}
+        />
       </div>
     </nav>
   );

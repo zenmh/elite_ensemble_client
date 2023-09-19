@@ -2,7 +2,14 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["www.startech.com.bd"],
+    domains: [
+      "www.startech.com.bd",
+      "www.custompc.com",
+      "i.ytimg.com",
+      "media.mmorpg.com",
+      "www.siliconera.com",
+      "geekawhat.com",
+    ],
   },
 };
 
