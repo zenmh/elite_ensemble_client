@@ -39,8 +39,7 @@ export default Home;
 
 Home.getLayout = (page: ReactNode) => <RootLayout>{page}</RootLayout>;
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  console.log(params);
+export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch(`${process.env.SERVER_URI}/products`);
   const data = await res.json();
 
@@ -48,5 +47,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       products: data.data,
     },
+    revalidate: 40,
   };
 };

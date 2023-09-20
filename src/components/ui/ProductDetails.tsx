@@ -32,7 +32,8 @@ const KeyFeature: FC<KeyFeatureProps> = ({ label, value }) => (
 );
 
 const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
-  const { image, product_name, price, key_features, status } = product;
+  const { image, product_name, price, key_features, status, description } =
+    product;
   const { brand, specification, type, port, resolution, voltage, model } =
     key_features;
 
@@ -97,6 +98,14 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
             size="md"
             variant="secondary"
           />
+        </div>
+        <div className="mt-4">
+          <p className="text-neutral-300">
+            <strong className="text-gray-300 text-lg">
+              Description:&nbsp;
+            </strong>
+            {description}
+          </p>
         </div>
       </div>
     </section>
